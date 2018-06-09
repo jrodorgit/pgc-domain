@@ -38,6 +38,7 @@ public class DomainsLoader implements DomainsLoaderInt{
 		Collection<DomainBean> valoresDominioActivos = null;
 		Hashtable<String,DomainBean> resul = new Hashtable<String,DomainBean>();
 		try{
+			System.out.println("---- Obteniendo valores desde loader...");
 			DomainBeanDAOInt cbdao = new DomainBeanDAOImpl();
 			valoresDominioActivos = cbdao.getAllByDomainDate(app, domain, fecha);
 			

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class DataBaseConnFactory {
 
-	private static final int FACTORIA_CONN = 3;
+	private static final int FACTORIA_CONN = 4;
 	private static final int ORACLE_CONN_FACTORY = 1;
 	private static final int SPRING_DS_FACTORY = 2;
 	private static final int MARIADB_CONN_FACTORY = 3;

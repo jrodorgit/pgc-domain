@@ -18,6 +18,11 @@
     <version>3.1.0</version>
     <scope>provided</scope>
 </dependency>
+    <dependency>
+    	<groupId>net.rodor</groupId>
+    	<artifactId>dominios</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>pgcdominios</finalName>

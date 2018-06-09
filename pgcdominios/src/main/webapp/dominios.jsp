@@ -21,7 +21,7 @@
 		}
 		//out.println("<p>numero valores del dominio:"+dvs.size()+"</p>");
 		 %>
-		  Conceptos de Gasto:<select>
+		  Conceptos de Gasto Loader:<select>
 		<option value=""></option>
 		<%
 			Enumeration<String> claves = dvs.keys();

@@ -5,7 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-  	<module>../dominios</module>
+  	
   	<module>../pgcdominios</module>
+  	<module>../dominios</module>
   </modules>
 </project>

@@ -42,12 +42,12 @@ public class DomainCache {
 		
 		Hashtable<String,DomainBean> dominio = null;
 		if( dominios.containsKey(domainKey)){
-			System.out.println("obteniendo valores desde cache...");
+			System.out.println("---- Obteniendo valores desde cache...");
 			dominio = dominios.get(domainKey);
 			
 			
 		}else{
-			System.out.println("cargando valores...");
+			System.out.println("--- Cargando valores... via loader");
 			DomainsLoader domainLoader = DomainsLoader.getInstance();
 			dominio = domainLoader.loadActiveDomain(app, nameDomain, null);
 			dominios.put(domainKey, dominio);
