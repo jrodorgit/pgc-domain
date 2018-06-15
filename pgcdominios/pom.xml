@@ -23,6 +23,11 @@
     	<artifactId>dominios</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>org.jboss.resteasy</groupId>
+    	<artifactId>resteasy-jaxrs</artifactId>
+    	<version>3.0.1.Final</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>pgcdominios</finalName>

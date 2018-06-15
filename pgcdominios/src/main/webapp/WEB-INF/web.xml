@@ -1,17 +1,57 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>PGC Domains</display-name>
-  <servlet>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<display-name>PGC Domains</display-name>
+	 <servlet>
         <servlet-name>dominio</servlet-name>
         <jsp-file>/dominios.jsp</jsp-file>
-    </servlet>
+	</servlet>
 
     <servlet-mapping>
         <servlet-name>dominio</servlet-name>
-        <url-pattern>/pgcdomain/dominio/*</url-pattern>
+        <url-pattern>/pgc/dominio/*</url-pattern>
+    </servlet-mapping> 
+    <context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/rest</param-value>
+	</context-param>
+ <!--  <context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>rest.RestService</param-value>
+	</context-param> -->
+ 
+ <servlet>
+        <servlet-name>Resteasy</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>net.rodor.dominios.DomainRestService</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Resteasy</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
-  
+    
+ <!--  <servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+                </servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>net.rodor.dominios.DomainApplication</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/pgcrest/*</url-pattern>
+	</servlet-mapping> -->
+ 
 </web-app>
