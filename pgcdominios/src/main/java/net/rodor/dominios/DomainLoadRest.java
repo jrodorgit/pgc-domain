@@ -28,6 +28,47 @@ public class DomainLoadRest{
 		System.out.println("Ejecutando microservicio domain load");
 		return Response.ok().build();
 	}
+	@GET
+	@Path("/loadb")
+	@Produces("application/json")
+	 public String loadb() {
+		
+		
+		System.out.println("Ejecutando microservicio domain loadb***");
+		DomainCache domainCache = DomainCache.getInstance();
+		Collection<DomainBean> dvscache=null;
+		try {
+			dvscache = domainCache.getDomainValues("SICOSS","CONCEPTOS GASTO");
+			
+		} catch (SQLException | DomainException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return dvscache.toString();
+		//return "[{\"name\":\"jose\"}]";
+	}
+	@GET
+	@Path("/loadc/{app}/{domain}")
+	@Produces("application/json")
+	 public String loadc(@PathParam("app") String app, @PathParam("domain") String domain) {
+		
+		System.out.println("*** Ejecutando microservicio domain loadc ***");
+		System.out.println("*** app:"+app);
+		System.out.println("*** domain:"+domain);
+		DomainCache domainCache = DomainCache.getInstance();
+		Collection<DomainBean> dvscache=null;
+		try {
+			dvscache = domainCache.getDomainValues(app, domain);
+			
+		} catch (SQLException | DomainException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return dvscache.toString();
+		//return "[{\"name\":\"jose\"}]";
+	}
 //	
 //	@GET
 //	@Path("/{param}")
