@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- localhost:8080/pgcdominios/jrodor_domain.html -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script>
+		
+		var domains = [{name:"GASTOS",valor:"SICOSS/CONCEPTOS GASTO"}, {name:"FACTURACION",valor:"SICOSS/CONCEPTOS FACT"}];
+		var valoresDominios = [];
+        var app = angular.module("dominios", []);
+        app.controller("Controlador",function($scope,$http){
+           $scope.doms = domains;
+		   $scope.vals = valoresDominios;
+		   
+		   $scope.updateDom = function(event){
+				if($scope.domSeleccionado.name == "FACTURACION"){
+					$http.get("./rest/dominios/loadc/SICOSS/CONCEPTOS FACT")
+				    .then(function(response) {
+				    	$scope.vals = response.data;
+				    });
+				}else{
+					$http.get("./rest/dominios/loadc/SICOSS/CONCEPTOS GASTO")
+				    .then(function(response) {
+				    	$scope.vals = response.data;
+				    });
+				}
+           };
+	         
+           
+		});
+		
+		
+    </script>
+    <style>
+        img{height:100px;}
+        p{font-size:50px;padding:15px;
+            background-color: greenyellow}
+    </style>
+</head>
+<body ng-app="dominios">
+   
+    <div ng-controller="Controlador">
+        <p>Selecciona un dominio para cargar sus valores...</p>
+		<select ng-model="domSeleccionado"
+            ng-options="d as d.name for d in doms"
+			ng-change="updateDom()">
+        </select><br/>
+		Elemento Seleccionado: {{domSeleccionado.name}}
+                {{domSeleccionado.valor}}
+         
+		<br/>
+		<p>Hay {{vals.length}} valores definidos para el dominio seleccionado</p>
+		<select ng-model="valSeleccionado"
+            ng-options="v as v.description for v in vals">
+        </select><br/>
+		Valor Elemento Seleccionado: {{valSeleccionado.description}}
+                {{valSeleccionado.code}}
+    </div>
+</body>
+
+</html>
